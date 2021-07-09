@@ -13,7 +13,7 @@ var data = {
 };
 
 ffmpeg("temp.mp3")
-  .outputOptions("-")
+  .outputOptions("-c:a libmp3lame  ")
   .outputOptions('-metadata title="songx"')
   .save("output.mp3")
   .on("start", function (cmdline) {
