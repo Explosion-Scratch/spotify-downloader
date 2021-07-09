@@ -12,10 +12,9 @@ var data = {
   artist: "Me",
 };
 try {
-    fs.unlinkSync("temp.mp3");
-    fs.unlinkSync("output.mp3");
-  } catch (e) {}
-  
+  fs.unlinkSync("output.mp3");
+} catch (e) {}
+
 ffmpeg("temp.mp3")
   .outputOptions("-c:a libmp3lame")
   .outputOptions('-metadata title="songx"')
