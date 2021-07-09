@@ -148,7 +148,7 @@ app.get("/downloadSong", async (req, res) => {
     (data) => console.log(data),
     () => {
       console.log("finished");
-      res.end(fs.readFileSync("audio_out${id}.mp3"));
+      res.end(fs.readFileSync(`audio_out${id}.mp3`));
       del();
     }
   );
