@@ -6,7 +6,7 @@ const ytdl = require("ytdl-core");
 const search = require("ytsr");
 const ffmpeg = require("fluent-ffmpeg");
 const fs = require("fs");
-const short = require('short-uuid');
+const short = require("short-uuid");
 
 require("dotenv").config();
 
@@ -50,7 +50,7 @@ app.get("/song", query, async (req, res) => {
   res.json(results);
 });
 app.get("/downloadSong", async (req, res) => {
-  const id = short("abcdefghijklmnopABCDEFGHIJKLMNOP_")
+  const id = short("abcdefghijklmnopABCDEFGHIJKLMNOP_").new();
   try {
     fs.unlinkSync("temp.mp3");
     fs.unlinkSync("output.mp3");
