@@ -135,9 +135,13 @@ app.get("/downloadSong", async (req, res) => {
     })
     .on("end", () => {
       console.log("Ended");
-      resolve();
+      res.end(fs.readFileSync("output.mp3"));
+
+      try {
+        fs.unlinkSync("temp.mp3");
+        fs.unlinkSync("output.mp3");
+      } catch (e) {}
     });
-  
 });
 
 app.listen(3000, () => {
