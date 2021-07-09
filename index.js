@@ -12,7 +12,7 @@ var data = {
   artist: "Me",
 };
 
-ffmpeg("input.mp3")
+ffmpeg("temp.mp3")
   .outputOptions("-codec copy")
   .outputOptions('-metadata title="songx"')
   .save("output.mp3")
