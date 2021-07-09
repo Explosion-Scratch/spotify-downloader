@@ -104,6 +104,13 @@ app.get("/downloadSong", async (req, res) => {
           .replace(/^"/, "")
           .replace(/"$/, "")}`
       )
+      .outputOptions(
+        "-metadata",
+        `date=${JSON.stringify(song.album.release_date.split("-")[0])
+          .replace(/^"/, "")
+          .replace(/"$/, "")}`
+      )
+
       .save("output.mp3")
       .on("start", function (cmdline) {
         console.log("Command line: " + cmdline);
