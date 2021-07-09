@@ -115,7 +115,6 @@ app.get("/downloadSong", async (req, res) => {
     download(song.album.images[0].url, `${__dirname}/cover.png`, resolve)
   );
   console.log("Downloaded cover: ", r);
-  const { exec } = require("child_process");
 
   const command = `-i output.mp3 -i cover.png -c:a copy -c:v copy -map 0:0 -map 1:0 -id3v2_version 3 -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" audio_out.mp3`;
   const run = require("./runCommand.js");
