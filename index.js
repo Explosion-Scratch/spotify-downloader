@@ -16,6 +16,7 @@ function del() {
     fs.unlinkSync("output.mp3");
     fs.unlinkSync("cover.png");
     fs.unlinkSync("cover.mp3");
+    fs.unlinkSync("temp.mp3");
   } catch (e) {}
 }
 
