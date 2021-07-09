@@ -21,7 +21,10 @@ ffmpeg("temp.mp3")
   .save("output.mp3")
   .on("start", function (cmdline) {
     console.log("Command line: " + cmdline);
-  }).on("end");
+  })
+  .on("end", () => {
+    console.log("Ended");
+  });
 
 var SpotifyWebApi = require("spotify-web-api-node");
 var api = new SpotifyWebApi({
