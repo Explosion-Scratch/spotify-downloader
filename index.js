@@ -88,7 +88,7 @@ app.get("/downloadSong", async (req, res) => {
       });
   });
 
-  res.end(fs.readFile("output.mp3"));
+  res.end(fs.readFileSync("output.mp3"));
 });
 
 app.listen(3000, () => {
