@@ -11,7 +11,7 @@ require("dotenv").config();
 var data = {
   artist: "Me",
 };
-meta.write("", data, function (err, data) {
+meta.write(`${__dirname}`, data, function (err, data) {
   if (err) console.error("Error writing metadata", err);
   else console.log(data);
 });
