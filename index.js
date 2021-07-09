@@ -113,7 +113,7 @@ app.get("/downloadSong", async (req, res) => {
   })
   //   ffmpeg -i audio-in.mp3 -i picture.png -c:a copy -c:v copy -map 0:0 -map 1:0 -id3v2_version 3
   // -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" audio-out.mp3
-  await new Promise(resolve => download(, ))
+  await new Promise(resolve => download(, __dirname))
   ffmpeg("output.mp3")
     .outputOptions([
       "-i cover.png",
