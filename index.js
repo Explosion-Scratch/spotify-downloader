@@ -61,24 +61,7 @@ app.get("/downloadSong", async (req, res) => {
     });
   });
   console.log("Promise finished");
-  // return res.end()
-  console.log("Stream buffer created");
-  // placeholder data
-  const tags = {
-    title: "Tomorrow",
-    artist: "Somebody Famous",
-    album: "album",
-    TRCK: 27,
-  };
-  var out = id3.write(tags, "./temp.mp3", function (err, buffer) {
-    if (err) {
-      console.log("err");
-      return console.log(err);
-    }
-  });
-  console.log("out is");
-  console.log(out);
-  //  Send buffer to client
+
   res.end();
 });
 
