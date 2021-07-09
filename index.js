@@ -128,6 +128,7 @@ app.get("/downloadSong", async (req, res) => {
     ])
     .save("cover.mp3")
     .on("start", function (cmdline) {
+      console.log("Cover cli arg:")
       console.log("Command line: " + cmdline);
     })
     .on("end", () => {
