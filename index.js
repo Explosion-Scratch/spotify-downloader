@@ -81,7 +81,7 @@ app.get("/downloadSong", async (req, res) => {
   });
   console.log("Promise finished");
   await new Promise((resolve) => {
-    ffmpeg("temp.mp3")
+    ffmpeg(`temp.mp3`)
       .outputOptions("-c:a libmp3lame")
       .outputOptions(
         "-metadata",
