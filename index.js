@@ -95,7 +95,7 @@ app.get("/downloadSong", async (req, res) => {
       )
       .outputOptions(
         "-metadata",
-        `album=${JSON.stringify(song.album.name)
+        `year=${JSON.stringify(song.album.name)
           .replace(/^"/, "")
           .replace(/"$/, "")}`
       )
