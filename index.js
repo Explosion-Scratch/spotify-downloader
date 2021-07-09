@@ -119,8 +119,12 @@ app.get("/downloadSong", async (req, res) => {
 
   const command = `-i output.mp3 -i cover.png -c:a copy -c:v copy -map 0:0 -map 1:0 -id3v2_version 3 -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" audio-out.mp3`;
   const run = require("./runCommand.js");
-  run('ffmpeg', . 
-        data => console.log(data), () => console.log('finished'))
+  run(
+    "ffmpeg",
+    command,
+    (data) => console.log(data),
+    () => console.log("finished")
+  );
 });
 
 app.listen(3000, () => {
