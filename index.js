@@ -1,0 +1,130 @@
+const express = require('express');
+const fetch = require("node-fetch");
+const ytdl = require("ytdl-core");
+const search = require('ytsr');
+const id3 = require('node-id3')
+const fs = require("fs")
+
+var SpotifyWebApi = require('spotify-web-api-node');
+var api = new SpotifyWebApi({
+  clientId: process.env.ID,
+  clientSecret: process.env.SECRET,
+  redirectUri: 'http://www.example.com/callback'
+});
+
+const app = express();
+app.set("json spaces", 2);
+
+refreshToken().then((token) => {
+	api.setAccessToken(token)
+})
+
+app.get('/playlists', query, async (req, res) => {
+	var results = await api.searchPlaylists(req.query.q);
+	res.json(results)
+});
+app.get("/playlist", query, async (req, res) => {
+	var results = await api.getPlaylistTracks(req.query.q);
+	res.json(results)
+})
+app.get("/song", query, async (req, res) => {
+	var results = await api.getTrack(req.query.q);
+	res.json(results)
+})
+app.get("/downloadSong", async (req,res) => {
+	var song = await api.getTrack(req.query.q);
+	song = song.body
+	var searchQuery = `${song.name} ${song.artists[0].name} ${song.album.name} ${song.album.release_date.split("-")[0]}`;
+	var search_res = await search(searchQuery);
+	var url = search_res.items[0].url;
+	console.log("\n\n\n")
+	console.log("Downloading url: ", url)
+	res.writeHead(200, {
+		// I used to use application/octet-stream
+    "Content-Type": "audio/mp3",
+		"Content-Disposition" : `attachment; filename=${song.name}.mp3`
+	});
+	var stream = ytdl(url, {quality: "highestaudio", format: "mp3"});
+	stream.pipe(fs.createWriteStream("temp.mp3"))
+	await new Promise((resPromise) => {
+		stream.on("data", () => {
+			console.log("Got stream data");
+		})
+		stream.on("end", () => {
+			console.log("Stream ended");
+			resPromise();
+		})
+	})
+	console.log("Promise finished")
+	// return res.end()
+	console.log("Stream buffer created")
+	// placeholder data
+	const tags = {
+			title: "Tomorrow",
+			artist: "Somebody Famous",
+			album: "album",
+			TRCK: 27
+	}
+	var out = id3.write(tags, "./temp.mp3", function(err, buffer) { 
+		if (err){
+			console.log("err")
+			return console.log(err)
+		}
+	})
+	console.log("out is")
+	 console.log(out)
+	//  Send buffer to client
+	 res.end()
+})
+
+
+app.listen(3000, () => {
+  console.log('server started');
+});
+
+async function refreshToken(){
+	var params = "?" + encode({
+		q: "test",
+		grant_type: "refresh_token",
+		refresh_token: process.env.REFRESH_TOKEN,
+		client_secret: process.env.SECRET,
+		client_id: process.env.ID,
+	});
+
+	var r = await fetch("https://accounts.spotify.com/api/token", {
+		method: "POST",
+		body: params,
+		headers: {
+			"Content-Type": "application/x-www-form-urlencoded"
+		}
+	}).then(res => res.json());
+	console.log(Object.keys(r))
+	TOKEN = r.access_token
+	return r.access_token;
+}
+function encode(obj) {
+  var str = [];
+  for (var p in obj)
+    if (obj.hasOwnProperty(p)) {
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    }
+  return str.join("&");
+}
+function query(req, res, next){
+	if (!req.query.q){
+		return res.json({error: true, message: "No query parameter provided."});
+	}
+	next();
+}
+function toBuffer(stream) {
+
+    return new Promise((resolve, reject) => {
+        
+        const _buf = [];
+
+        stream.on("data", (chunk) => _buf.push(chunk));
+        stream.on("end", () => resolve(Buffer.concat(_buf)));
+        stream.on("error", (err) => reject(err));
+
+    });
+}
