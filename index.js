@@ -8,6 +8,9 @@ const meta = require("ffmetadata");
 const fs = require("fs");
 require("dotenv").config();
 
+
+
+
 var SpotifyWebApi = require("spotify-web-api-node");
 var api = new SpotifyWebApi({
   clientId: process.env.ID,
