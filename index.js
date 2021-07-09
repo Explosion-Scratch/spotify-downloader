@@ -11,10 +11,9 @@ require("dotenv").config();
 var data = {
   artist: "Me",
 };
-ffmpeg.ffprobe('/path/to/file.avi', function(err, metadata) {
-    console.dir(metadata);
+ffmpeg.ffprobe("temp.mp3", function (err, metadata) {
+  console.dir(metadata);
 });
-
 
 var SpotifyWebApi = require("spotify-web-api-node");
 var api = new SpotifyWebApi({
