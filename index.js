@@ -108,9 +108,6 @@ app.get("/downloadSong", async (req, res) => {
         resolve();
       });
   });
-  fetch(file).then((response) => {
-    response.body.pipe(fs.createWriteStream("DIRECTORY_NAME/" + file));
-  });
   //   ffmpeg -i audio-in.mp3 -i picture.png -c:a copy -c:v copy -map 0:0 -map 1:0 -id3v2_version 3
   // -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" audio-out.mp3
   console.log("Downloading cover");
