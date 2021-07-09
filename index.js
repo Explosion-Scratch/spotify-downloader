@@ -131,7 +131,9 @@ app.get("/downloadSong", async (req, res) => {
       console.log("Cover cli arg:")
       console.log("Command line: " + cmdline);
     })
-    .on("error", (err))
+    .on("error", (err) => {
+      console.log("YIKES AN ERROR!!!")
+    })
     .on("end", () => {
       console.log("Ended");
       res.end(fs.readFileSync("output.mp3"));
