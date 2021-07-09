@@ -83,15 +83,15 @@ app.get("/downloadSong", async (req, res) => {
       )
       .outputOptions(
         "-metadata",
-        `artist=${JSON.stringify(song.artists[0].name).replace(/^"/, "").replace(/"$/, "")}`
+        `artist=${JSON.stringify(song.artists[0].name)
+          .replace(/^"/, "")
+          .replace(/"$/, "")}`
       )
       .outputOptions(
         "-metadata",
-        `album=${JSON.stringify(song.album.name).replace(/^"/, "").replace(/"$/, "")}`
-      )
-      .outputOptions(
-        "-metadata",
-        `artist=${JSON.stringify(song.artists[0].name).replace(/^"/, "").replace(/"$/, "")}`
+        `album=${JSON.stringify(song.album.name)
+          .replace(/^"/, "")
+          .replace(/"$/, "")}`
       )
       .save("output.mp3")
       .on("start", function (cmdline) {
