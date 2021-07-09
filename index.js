@@ -4,7 +4,7 @@ const express = require("express");
 const fetch = require("node-fetch");
 const ytdl = require("ytdl-core");
 const search = require("ytsr");
-const meta = require("ffmetadata");
+const ffmpeg = require("fluent-ffmpeg");
 const fs = require("fs");
 require("dotenv").config();
 
