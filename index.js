@@ -16,7 +16,7 @@ function del() {
   var files = fs.readdirSync(__dirname);
   for (let file of files){
     if (file.endsWith(".mp3") || file.endsWith(".png")){
-      f
+      fs.unlinkSync(file)
     }
   }
 }
