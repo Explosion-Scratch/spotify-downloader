@@ -191,7 +191,7 @@ function toBuffer(stream) {
 }
 const http = require('http');
 
-function(url, dest, cb) {
+function download(url, dest, cb) {
     const file = fs.createWriteStream(dest);
 
     const request = http.get(url, (response) => {
