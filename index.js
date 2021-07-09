@@ -8,9 +8,6 @@ const ffmpeg = require("fluent-ffmpeg");
 const fs = require("fs");
 require("dotenv").config();
 
-var data = {
-  artist: "Me",
-};
 try {
   fs.unlinkSync("audio-out.mp3");
   fs.unlinkSync("output.mp3");
