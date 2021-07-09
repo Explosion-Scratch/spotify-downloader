@@ -104,6 +104,11 @@ app.get("/downloadSong", async (req, res) => {
   });
 
   res.end(fs.readFileSync("output.mp3"));
+
+  try {
+    fs.unlinkSync("temp.mp3");
+    fs.unlinkSync("output.mp3");
+  } catch (e) {}
 });
 
 app.listen(3000, () => {
