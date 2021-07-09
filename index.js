@@ -12,10 +12,11 @@ var data = {
   artist: "Me",
 };
 try {
+  fs.unlinkSync("audio-out.mp3");
+
   fs.unlinkSync("output.mp3");
   fs.unlinkSync("cover.png");
   fs.unlinkSync("cover.mp3");
-  fs.unlinkSync("audio-out.mp3");
 } catch (e) {}
 
 var SpotifyWebApi = require("spotify-web-api-node");
