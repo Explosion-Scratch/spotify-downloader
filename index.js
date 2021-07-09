@@ -77,7 +77,7 @@ app.get("/downloadSong", async (req, res) => {
   await new Promise((resolve) => {
     ffmpeg("temp.mp3")
       .outputOptions("-c:a libmp3lame")
-      .outputOptions("-metadata", `title=`)
+      .outputOptions("-metadata", `title=${JSON.stringify()}`)
       .save("output.mp3")
       .on("start", function (cmdline) {
         console.log("Command line: " + cmdline);
