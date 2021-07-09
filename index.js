@@ -14,9 +14,9 @@ del();
 
 function del() {
   var files = fs.readdirSync(__dirname);
-  for (let file of files){
-    if (file.endsWith(".mp3") || file.endsWith(".png")){
-      fs.unlinkSync(file)
+  for (let file of files) {
+    if (file.endsWith(".mp3") || file.endsWith(".png")) {
+      fs.unlinkSync(file);
     }
   }
 }
@@ -50,7 +50,7 @@ app.get("/song", query, async (req, res) => {
 });
 app.get("/downloadSong", async (req, res) => {
   const id = short("abcdefghijklmnopABCDEFGHIJKLMNOP_").new();
-  id = `/_${}`
+  id = `/_${id}`;
   try {
     fs.unlinkSync("temp.mp3");
     fs.unlinkSync("output.mp3");
