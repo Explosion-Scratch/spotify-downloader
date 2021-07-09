@@ -10,6 +10,7 @@ var SpotifyWebApi = require('spotify-web-api-node');
 var api = new SpotifyWebApi({
   clientId: process.env.ID,
   clientSecret: process.env.SECRET,
+//   I don't think this is needed
   redirectUri: 'http://www.example.com/callback'
 });
 
