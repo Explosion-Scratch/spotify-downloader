@@ -68,7 +68,7 @@ app.get("/downloadSong", async (req, res) => {
   var data = {
     artist: "Me",
   };
-  meta.read("temp.mp3", data, function (err, data) {
+  meta.write("temp.mp3", data, function (err, data) {
     if (err) console.error("Error reading metadata", err);
     else console.log(data);
   });
