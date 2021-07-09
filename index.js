@@ -13,7 +13,10 @@ require("dotenv").config();
 del();
 
 function del() {
-  var files = fs.readdirSync(__dirname)
+  var files = fs.readdirSync(__dirname);
+  for (let file of files){
+    if (file.endsWith(".m[3"))
+  }
 }
 
 var SpotifyWebApi = require("spotify-web-api-node");
