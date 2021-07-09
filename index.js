@@ -43,7 +43,10 @@ app.get("/song", query, async (req, res) => {
   res.json(results);
 });
 app.get("/downloadSong", async (req, res) => {
-    
+    try {
+        fs.unlinkSync("temp.mp3");
+        fs.unlinkSync("output.mp3");
+      } catch (e) {}
   var song = await api.getTrack(req.query.q);
   song = song.body;
   var searchQuery = `${song.name} ${song.artists[0].name} ${song.album.name} ${
