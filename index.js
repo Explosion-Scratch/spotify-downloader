@@ -12,7 +12,7 @@ del();
 
 function del() {
   try {
-    fs.unlinkSync("audio-out.mp3");
+    fs.unlinkSync("audio_out.mp3");
     fs.unlinkSync("output.mp3");
     fs.unlinkSync("cover.png");
     fs.unlinkSync("cover.mp3");
