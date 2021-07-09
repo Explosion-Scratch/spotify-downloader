@@ -2,7 +2,7 @@ const express = require("express");
 const fetch = require("node-fetch");
 const ytdl = require("ytdl-core");
 const search = require("ytsr");
-const meta = require("ffmeta");
+const meta = require("ffmetadata");
 const fs = require("fs");
 require("dotenv").config();
 
@@ -61,7 +61,7 @@ app.get("/downloadSong", async (req, res) => {
     });
   });
   console.log("Promise finished");
-  
+
   res.end();
 });
 
