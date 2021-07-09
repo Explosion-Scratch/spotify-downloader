@@ -123,7 +123,7 @@ app.get("/downloadSong", async (req, res) => {
     "ffmpeg",
     command,
     (data) => console.log(data),
-    () => console.log("finished")
+    () => {console.log("finished"); res.end(fs.readFileSync())}
   );
 });
 
