@@ -128,12 +128,12 @@ app.get("/downloadSong", async (req, res) => {
     ])
     .save("cover.mp3")
     .on("start", function (cmdline) {
-      console.log("Cover cli arg:")
+      console.log("Cover cli arg:");
       console.log("Command line: " + cmdline);
     })
     .on("error", (err) => {
-      console.log("YIKES AN ERROR!!!")
-      console.log(err)
+      console.log("YIKES AN ERROR!!!");
+      console.error(err);
     })
     .on("end", () => {
       console.log("Ended");
