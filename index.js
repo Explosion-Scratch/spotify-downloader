@@ -9,10 +9,12 @@ const fs = require("fs");
 require("dotenv").config();
 
 var data = {
-    artist: "Me",
-  };
-  
-
+  artist: "Me",
+};
+meta.write("temp.mp3", data, function (err, data) {
+  if (err) console.error("Error writing metadata", err);
+  else console.log(data);
+});
 
 var SpotifyWebApi = require("spotify-web-api-node");
 var api = new SpotifyWebApi({
