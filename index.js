@@ -6,6 +6,8 @@ const ytdl = require("ytdl-core");
 const search = require("ytsr");
 const ffmpeg = require("fluent-ffmpeg");
 const fs = require("fs");
+const short = require('short-uuid');
+
 require("dotenv").config();
 
 del();
