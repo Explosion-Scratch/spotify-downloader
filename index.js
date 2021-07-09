@@ -115,7 +115,7 @@ app.get("/downloadSong", async (req, res) => {
     download(song.album.images[0].url, `${__dirname}/cover.png`, resolve)
   );
   console.log("Downloaded cover: ", r);
-  var args = `-i cover.png -c:a copy -c:v copy -map 0:0 -map 1:0 -id3v2_version 3 -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" cover.mp3`;
+  var args = `-i cover.png -c:a copy -c:v copy -map 0:0 -map 1:0 -id3v2_version 3 -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)"`;
   ffmpeg("output.mp3")
     .outputOptions()
     .save("cover.mp3")
