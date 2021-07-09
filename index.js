@@ -8,7 +8,9 @@ const ffmpeg = require("fluent-ffmpeg");
 const fs = require("fs");
 require("dotenv").config();
 
-function del(){
+del();
+
+function del() {
   try {
     fs.unlinkSync("audio-out.mp3");
     fs.unlinkSync("output.mp3");
