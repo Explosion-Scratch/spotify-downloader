@@ -84,6 +84,7 @@ app.get("/downloadSong", async (req, res) => {
   })
   .on("end", () => {
     console.log("Ended");
+    resolve();
   });
 
   res.end();
