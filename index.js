@@ -8,12 +8,14 @@ const ffmpeg = require("fluent-ffmpeg");
 const fs = require("fs");
 require("dotenv").config();
 
-try {
-  fs.unlinkSync("audio-out.mp3");
-  fs.unlinkSync("output.mp3");
-  fs.unlinkSync("cover.png");
-  fs.unlinkSync("cover.mp3");
-} catch (e) {}
+function del(){
+  try {
+    fs.unlinkSync("audio-out.mp3");
+    fs.unlinkSync("output.mp3");
+    fs.unlinkSync("cover.png");
+    fs.unlinkSync("cover.mp3");
+  } catch (e) {}
+}
 
 var SpotifyWebApi = require("spotify-web-api-node");
 var api = new SpotifyWebApi({
