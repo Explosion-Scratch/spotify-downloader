@@ -113,7 +113,7 @@ ffmpeg("output.mp3").outputOptions([
     "-i cover.png",
     "-c:a copy",
     "-c:v copy",
-    "-map 1:"
+    "-map 0:0"
 ])
   res.end(fs.readFileSync("output.mp3"));
 
