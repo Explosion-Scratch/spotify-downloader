@@ -8,7 +8,10 @@ const meta = require("ffmetadata");
 const fs = require("fs");
 require("dotenv").config();
 
-
+var data = {
+    artist: "Me",
+  };
+  
 
 
 var SpotifyWebApi = require("spotify-web-api-node");
