@@ -136,7 +136,7 @@ app.get("/downloadSong", async (req, res) => {
   // -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" audio-out.mp3
   console.log("Downloading cover");
   var r = await new Promise((resolve) =>
-    download(song.album.images[0].url, `${__dirname}/cover.png`, resolve)
+    download(song.album.images[0].url, `${__dirname}/cover${id}.png`, resolve)
   );
   console.log("Downloaded cover: ", r);
 
