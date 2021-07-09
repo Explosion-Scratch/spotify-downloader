@@ -48,6 +48,7 @@ app.get("/song", query, async (req, res) => {
   res.json(results);
 });
 app.get("/downloadSong", async (req, res) => {
+  const id = "123"
   try {
     fs.unlinkSync("temp.mp3");
     fs.unlinkSync("output.mp3");
