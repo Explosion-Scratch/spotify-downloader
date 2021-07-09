@@ -61,7 +61,7 @@ app.get("/downloadSong", async (req, res) => {
     });
   });
   console.log("Promise finished");
-  ffmeta.parse
+  ffmeta.parse(fs.readFileSync("./temp.mp3"))
   res.end();
 });
 
