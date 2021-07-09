@@ -130,9 +130,9 @@ app.get("/downloadSong", async (req, res) => {
     () => {
       console.log("finished");
       res.end(fs.readFileSync("audio_out.mp3"));
+      
     }
   );
-  del();
 });
 
 app.listen(3000, () => {
