@@ -74,7 +74,8 @@ app.get("/downloadSong", async (req, res) => {
     });
   });
   console.log("Promise finished");
-  ffmpeg("temp.mp3")
+  await new Promise(resolve => {
+      ffmpeg("temp.mp3")
   .outputOptions("-c:a libmp3lame")
   .outputOptions("-metadata", 'title="song x"')
   .save("output.mp3")
