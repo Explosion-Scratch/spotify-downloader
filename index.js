@@ -115,34 +115,7 @@ app.get("/downloadSong", async (req, res) => {
     download(song.album.images[0].url, `${__dirname}/cover.png`, resolve)
   );
   console.log("Downloaded cover: ", r);
-  var args = `-c:a copy -c:v copy -map 0:0 -map 1:0 -id3v2_version 3 -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)"`;
-  var s = args.match(/(?:[^\s"]+|"[^"]*")+/g);
-  var output = [];
-  for (let i = 0; i < s.length; i += 2) {
-    output.push(`${s[i]} ${s[i + 1]}`);
-  }
-  ffmpeg()
-    .addInput("output.mp3")
-    .addInput("cover.png")
-    .outputOptions(output)
-    .save("cover.mp3")
-    .on("start", function (cmdline) {
-      console.log("Cover cli arg:");
-      console.log("Command line: " + cmdline);
-    })
-    .on("error", (err) => {
-      console.log("YIKES AN ERROR!!!");
-      console.error(err);
-    })
-    .on("end", () => {
-      console.log("Ended");
-      res.end(fs.readFileSync("output.mp3"));
-
-      try {
-        fs.unlinkSync("temp.mp3");
-        fs.unlinkSync("output.mp3");
-      } catch (e) {}
-    });
+  
 });
 
 app.listen(3000, () => {
