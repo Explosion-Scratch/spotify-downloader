@@ -108,13 +108,16 @@ app.get("/downloadSong", async (req, res) => {
         resolve();
       });
   });
-  fetch(file).then(response => {
-    response.body.pipe(fs.createWriteStream('DIRECTORY_NAME/' + file))
-  })
+  fetch(file).then((response) => {
+    response.body.pipe(fs.createWriteStream("DIRECTORY_NAME/" + file));
+  });
   //   ffmpeg -i audio-in.mp3 -i picture.png -c:a copy -c:v copy -map 0:0 -map 1:0 -id3v2_version 3
   // -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" audio-out.mp3
-  console.log("Downloading cover")
-  var r = await new Promise(resolve => download(song.album.images[0].url, `${__dirname}/cover.png`, resolve))
+  console.log("Downloading cover");
+  var r = await new Promise((resolve) =>
+    download(song.album.images[0].url, `${__dirname}/cover.png`, resolve)
+  );
+  console.log("Downloaded cover: ", r);
   ffmpeg("output.mp3")
     .outputOptions([
       "-i cover.png",
@@ -191,31 +194,32 @@ function toBuffer(stream) {
     stream.on("error", (err) => reject(err));
   });
 }
-const http = require('http');
+const http = require("http");
 
 function download(url, dest, cb) {
-    const file = fs.createWriteStream(dest);
+  const file = fs.createWriteStream(dest);
 
-    const request = http.get(url, (response) => {
-        // check if response is success
-        if (response.statusCode !== 200) {
-            return cb('Response status was ' + response.statusCode);
-        }
+  const request = http.get(url, (response) => {
+    // check if response is success
+    if (response.statusCode !== 200) {
+      return cb("Response status was " + response.statusCode);
+    }
 
-        response.pipe(file);
-    });
+    response.pipe(file);
+  });
 
-    // close() is async, call cb after close completes
-    file.on('finish', () => file.close(cb));
+  // close() is async, call cb after close completes
+  file.on("finish", () => file.close(cb));
 
-    // check for request error too
-    request.on('error', (err) => {
-        fs.unlink(dest);
-        return cb(err.message);
-    });
+  // check for request error too
+  request.on("error", (err) => {
+    fs.unlink(dest);
+    return cb(err.message);
+  });
 
-    file.on('error', (err) => { // Handle errors
-        fs.unlink(dest); // Delete the file async. (But we don't check the result) 
-        return cb(err.message);
-    });
-};
+  file.on("error", (err) => {
+    // Handle errors
+    fs.unlink(dest); // Delete the file async. (But we don't check the result)
+    return cb(err.message);
+  });
+}
