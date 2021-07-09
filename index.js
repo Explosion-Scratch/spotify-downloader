@@ -12,14 +12,14 @@ var data = {
   artist: "Me",
 };
 
-ffmpeg('input.mp3')
-      .outputOptions('-codec copy')
-      .outputOptions('-metadata title="songx"')
-      .save('output.mp3')
-      .on('start', function(cmdline) {
-        console.log('Command line: ' + cmdline);
-      })
-      
+ffmpeg("input.mp3")
+  .outputOptions("-codec copy")
+  .outputOptions('-metadata title="songx"')
+  .save("output.mp3")
+  .on("start", function (cmdline) {
+    console.log("Command line: " + cmdline);
+  });
+
 var SpotifyWebApi = require("spotify-web-api-node");
 var api = new SpotifyWebApi({
   clientId: process.env.ID,
