@@ -68,7 +68,7 @@ app.get("/downloadSong", async (req, res) => {
     "Content-Disposition": `attachment; filename=${song.name}.mp3`,
   });
   var stream = ytdl(url, { quality: "highestaudio", format: "mp3" });
-  stream.pipe(fs.createWriteStream(`temp.mp3`));
+  stream.pipe(fs.createWriteStream(`temp${id}.mp3`));
   await new Promise((resPromise) => {
     stream.on("data", () => {
       console.log("Got stream data");
