@@ -121,7 +121,8 @@ app.get("/downloadSong", async (req, res) => {
   for (let i = 0; i < s.length; i += 2) {
     output.push(`${s[i]} ${s[i + 1]}`);
   }
-  ffmpeg("output.mp3")
+  ffmpeg()
+  
   .addInput("cover.png")
     .outputOptions(output)
     .save("cover.mp3")
