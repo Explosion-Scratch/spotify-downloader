@@ -81,6 +81,10 @@ app.get("/downloadSong", async (req, res) => {
         "-metadata",
         `title=${JSON.stringify(song.name).replace(/^"/, "").replace(/"$/, "")}`
       )
+      .outputOptions(
+        "-metadata",
+        `artist=${JSON.stringify(song.name).replace(/^"/, "").replace(/"$/, "")}`
+      )
       .save("output.mp3")
       .on("start", function (cmdline) {
         console.log("Command line: " + cmdline);
