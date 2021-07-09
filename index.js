@@ -4,7 +4,7 @@ const ytdl = require("ytdl-core");
 const search = require('ytsr');
 const id3 = require('node-id3')
 const fs = require("fs")
-
+const dotenv = require("dotenv");
 var SpotifyWebApi = require('spotify-web-api-node');
 var api = new SpotifyWebApi({
   clientId: process.env.ID,
