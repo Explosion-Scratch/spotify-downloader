@@ -127,7 +127,7 @@ app.get("/downloadSong", async (req, res) => {
       res.end(fs.readFileSync("audio_out.mp3"));
     }
   );
-  delete();
+  del();
 });
 
 app.listen(3000, () => {
