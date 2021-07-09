@@ -119,7 +119,7 @@ ffmpeg("output.mp3").outputOptions([
     "-id3v2_version 3",
     '-metadata:s:v title="Album cover"',
     '-metadata:s:v comment="Cover (front)"',
-]).on("start", function (cmdline) {
+]).save("").on("start", function (cmdline) {
     console.log("Command line: " + cmdline);
   })
   .on("end", () => {
