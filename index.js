@@ -15,6 +15,7 @@ try {
   fs.unlinkSync("output.mp3");
   fs.unlinkSync("cover.png");
   fs.unlinkSync("cover.mp3");
+  fs.unlinkSync("cover.mp3");
 } catch (e) {}
 
 var SpotifyWebApi = require("spotify-web-api-node");
