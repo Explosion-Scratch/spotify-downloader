@@ -193,7 +193,7 @@ function toBuffer(stream) {
 const http = require("http");
 
 function download(url, dest, cb) {
-  url = url.replace
+  url = url.replace("https")
   const file = fs.createWriteStream(dest);
 
   const request = http.get(url, (response) => {
