@@ -112,6 +112,7 @@ app.get("/downloadSong", async (req, res) => {
 ffmpeg("output.mp3").outputOptions([
     "-i cover.png",
     "-c:a copy",
+    ""
 ])
   res.end(fs.readFileSync("output.mp3"));
 
