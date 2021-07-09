@@ -108,7 +108,8 @@ app.get("/downloadSong", async (req, res) => {
         resolve();
       });
   });
-  
+//   ffmpeg -i audio-in.mp3 -i picture.png -c:a copy -c:v copy -map 0:0 -map 1:0 -id3v2_version 3 -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" audio-out.mp3
+
   res.end(fs.readFileSync("output.mp3"));
 
   try {
