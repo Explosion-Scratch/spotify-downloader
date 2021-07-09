@@ -11,10 +11,10 @@ require("dotenv").config();
 var data = {
   artist: "Me",
 };
-meta.write(`${__dirname}/temp.mp3`, data, function (err, data) {
-  if (err) console.error("Error writing metadata", err);
-  else console.log(data);
+ffmpeg.ffprobe('/path/to/file.avi', function(err, metadata) {
+    console.dir(metadata);
 });
+
 
 var SpotifyWebApi = require("spotify-web-api-node");
 var api = new SpotifyWebApi({
