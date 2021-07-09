@@ -43,10 +43,10 @@ app.get("/song", query, async (req, res) => {
   res.json(results);
 });
 app.get("/downloadSong", async (req, res) => {
-    try {
-        fs.unlinkSync("temp.mp3");
-        fs.unlinkSync("output.mp3");
-      } catch (e) {}
+  try {
+    fs.unlinkSync("temp.mp3");
+    fs.unlinkSync("output.mp3");
+  } catch (e) {}
   var song = await api.getTrack(req.query.q);
   song = song.body;
   var searchQuery = `${song.name} ${song.artists[0].name} ${song.album.name} ${
@@ -74,19 +74,19 @@ app.get("/downloadSong", async (req, res) => {
     });
   });
   console.log("Promise finished");
-  await new Promise(resolve => {
-      ffmpeg("temp.mp3")
-  .outputOptions("-c:a libmp3lame")
-  .outputOptions("-metadata", 'title="song x"')
-  .save("output.mp3")
-  .on("start", function (cmdline) {
-    console.log("Command line: " + cmdline);
-  })
-  .on("end", () => {
-    console.log("Ended");
-    resolve();
+  await new Promise((resolve) => {
+    ffmpeg("temp.mp3")
+      .outputOptions("-c:a libmp3lame")
+      .outputOptions("-metadata", 'title="song x"')
+      .save("output.mp3")
+      .on("start", function (cmdline) {
+        console.log("Command line: " + cmdline);
+      })
+      .on("end", () => {
+        console.log("Ended");
+        resolve();
+      });
   });
-})
 
   res.end();
 });
