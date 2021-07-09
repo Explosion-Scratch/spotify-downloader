@@ -15,17 +15,6 @@ try {
   fs.unlinkSync("output.mp3");
 } catch (e) {}
 
-ffmpeg("temp.mp3")
-  .outputOptions("-c:a libmp3lame")
-  .outputOptions("-metadata", 'title="song x"')
-  .save("output.mp3")
-  .on("start", function (cmdline) {
-    console.log("Command line: " + cmdline);
-  })
-  .on("end", () => {
-    console.log("Ended");
-  });
-
 var SpotifyWebApi = require("spotify-web-api-node");
 var api = new SpotifyWebApi({
   clientId: process.env.ID,
