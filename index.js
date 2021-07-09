@@ -122,8 +122,8 @@ app.get("/downloadSong", async (req, res) => {
     output.push(`${s[i]} ${s[i + 1]}`);
   }
   ffmpeg()
-  
-  .addInput("cover.png")
+    .addInput("output.mp3")
+    .addInput("cover.png")
     .outputOptions(output)
     .save("cover.mp3")
     .on("start", function (cmdline) {
