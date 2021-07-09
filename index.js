@@ -61,7 +61,7 @@ app.get("/downloadSong", async (req, res) => {
     });
   });
   console.log("Promise finished");
-
+  ffmeta.parse
   res.end();
 });
 
