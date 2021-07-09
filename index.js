@@ -117,7 +117,7 @@ app.get("/downloadSong", async (req, res) => {
   console.log("Downloaded cover: ", r);
   const { exec } = require("child_process");
 
-  const command = 
+  const command = `ffmpeg -i output.mp3 -i cover.png -c:a copy -c:v copy -map 0:0 -map 1:0 -id3v2_version 3 -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)" audio-out.mp3`;
   exec(command, (error, stdout, stderr) => {
       if (error) {
           console.log(`error: ${error.message}`);
