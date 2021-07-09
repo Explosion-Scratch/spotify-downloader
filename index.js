@@ -118,7 +118,7 @@ ffmpeg("output.mp3").outputOptions([
     "-map 1:0",
     "-id3v2_version 3",
     '-metadata:s:v title="Album cover"',
-    ''
+    '-metadata:s:v comment="Cover (front)"'
 ])
   res.end(fs.readFileSync("output.mp3"));
 
