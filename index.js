@@ -13,13 +13,7 @@ require("dotenv").config();
 del();
 
 function del() {
-  try {
-    fs.unlinkSync("audio_out.mp3");
-    fs.unlinkSync("output.mp3");
-    fs.unlinkSync("cover.png");
-    fs.unlinkSync("cover.mp3");
-    fs.unlinkSync("temp.mp3");
-  } catch (e) {}
+  fs.readD
 }
 
 var SpotifyWebApi = require("spotify-web-api-node");
