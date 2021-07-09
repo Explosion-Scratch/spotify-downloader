@@ -49,7 +49,7 @@ app.get("/song", query, async (req, res) => {
   res.json(results);
 });
 app.get("/downloadSong", async (req, res) => {
-  const id = short("abcdefghijklmnopABCDEFGHIJKLMNOP_").new();
+  var id = short("abcdefghijklmnopABCDEFGHIJKLMNOP_").new();
   id = `/${id}`;
   try {
     fs.unlinkSync("temp.mp3");
