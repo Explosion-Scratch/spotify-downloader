@@ -116,6 +116,10 @@ app.get("/downloadSong", async (req, res) => {
   );
   console.log("Downloaded cover: ", r);
   var args = `-i cover.png -c:a copy -c:v copy -map 0:0 -map 1:0 -id3v2_version 3 -metadata:s:v title="Album cover" -metadata:s:v comment="Cover (front)"`;
+  var output = [];
+for (let i = 0; i < s.length; i+=2){
+    output.push(`${s[i]} ${s[i+1]}`)
+}
   ffmpeg("output.mp3")
     .outputOptions()
     .save("cover.mp3")
