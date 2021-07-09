@@ -133,6 +133,7 @@ app.get("/downloadSong", async (req, res) => {
     })
     .on("error", (err) => {
       console.log("YIKES AN ERROR!!!")
+      console.log(err)
     })
     .on("end", () => {
       console.log("Ended");
