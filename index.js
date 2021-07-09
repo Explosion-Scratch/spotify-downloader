@@ -13,7 +13,7 @@ require("dotenv").config();
 del();
 
 function del() {
-  fs.readD
+  fs.readdirSync(__dirname)
 }
 
 var SpotifyWebApi = require("spotify-web-api-node");
