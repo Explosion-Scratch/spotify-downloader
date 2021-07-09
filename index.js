@@ -13,7 +13,7 @@ var data = {
 };
 try {
   fs.unlinkSync("output.mp3");
-  fs.unlinkSync("c.mp3");
+  fs.unlinkSync("cover.png");
   fs.unlinkSync("output.mp3");
 } catch (e) {}
 
