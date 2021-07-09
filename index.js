@@ -17,7 +17,7 @@ try {
 
 ffmpeg("temp.mp3")
   .outputOptions("-c:a libmp3lame")
-  .outputOptions('-metadata title="songx"')
+  .outputOptions('-metadata', 'title="song x"')
   .save("output.mp3")
   .on("start", function (cmdline) {
     console.log("Command line: " + cmdline);
